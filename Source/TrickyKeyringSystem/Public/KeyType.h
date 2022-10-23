@@ -30,16 +30,15 @@ class TRICKYKEYRINGSYSTEM_API UKeyType : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintGetter, Category="KeyringSystem")
 	bool GetDestroyOnUse() const;
 
-	UFUNCTION(BlueprintGetter, Category="KeyringSystem")
-	FKeyData GetKeyData() const;
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	void GetKeyData(FKeyData& Data) const;
 	
 private:
-	UPROPERTY(EditDefaultsOnly, BlueprintGetter=GetDestroyOnUse, Category="Key", meta=(AllowPrivateAccess))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Key", meta=(AllowPrivateAccess))
 	bool bDestroyOnUse = false;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintGetter=GetKeyData, Category="Key", meta=(AllowPrivateAccess))
+	UPROPERTY(EditDefaultsOnly, Category="Key", meta=(AllowPrivateAccess))
 	FKeyData KeyData;
 };

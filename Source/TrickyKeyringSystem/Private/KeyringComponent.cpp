@@ -117,7 +117,7 @@ bool UKeyringComponent::GetKeyDataByIndex(const int32 Index, FKeyData& KeyData)
 		return false;
 	}
 	
-	KeyData = Key->GetKeyData();
+	Key->GetKeyData(KeyData);
 	return true;
 }
 
@@ -141,7 +141,7 @@ bool UKeyringComponent::GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, F
 		return false;
 	}
 	
-	KeyData = Key->GetKeyData();
+	Key->GetKeyData(KeyData);
 	return true;
 }
 

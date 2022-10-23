@@ -8,7 +8,7 @@ bool UKeyType::GetDestroyOnUse() const
 	return bDestroyOnUse;
 }
 
-FKeyData UKeyType::GetKeyData() const
+void UKeyType::GetKeyData(FKeyData& Data) const
 {
-	return KeyData;
+	Data = KeyData;
 }
