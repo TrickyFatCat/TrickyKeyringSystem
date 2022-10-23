@@ -24,7 +24,7 @@ struct FKeyData
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class TRICKYKEYRINGSYSTEM_API UKeyType : public UObject
 {
 	GENERATED_BODY()
