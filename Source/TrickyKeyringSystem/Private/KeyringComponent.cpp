@@ -98,38 +98,39 @@ bool UKeyringComponent::HasKey(const TSubclassOf<UKeyType> KeyType)
 	return Keyring.ContainsByPredicate(Predicate);
 }
 
-void UKeyringComponent::GetKeyDataByIndex(const int32 Index, FKeyData& KeyData)
+bool UKeyringComponent::GetKeyDataByIndex(const int32 Index, FKeyData& KeyData)
 {
 	if (KeyringIsEmpty())
 	{
-		return;
+		return false;
 	}
 
 	if (Index < 0 || Index >= Keyring.Num())
 	{
-		return;
+		return false;
 	}
 
 	const UKeyType* Key = Keyring[Index];
 
 	if (!IsValid(Key))
 	{
-		return;
+		return false;
 	}
 	
 	KeyData = Key->GetKeyData();
+	return true;
 }
 
-void UKeyringComponent::GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, FKeyData& KeyData)
+bool UKeyringComponent::GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, FKeyData& KeyData)
 {
 	if (KeyringIsEmpty())
 	{
-		return;
+		return false;
 	}
 
 	if (!HasKey(KeyType) || !IsValid(KeyType))
 	{
-		return;
+		return false;
 	}
 
 	auto Predicate = [&](const UKeyType* Key) { return Key->IsA(KeyType); };
@@ -137,10 +138,11 @@ void UKeyringComponent::GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, F
 
 	if (!IsValid(Key))
 	{
-		return;
+		return false;
 	}
 	
 	KeyData = Key->GetKeyData();
+	return true;
 }
 
 UKeyType* UKeyringComponent::GetKey(const TSubclassOf<UKeyType> KeyType)

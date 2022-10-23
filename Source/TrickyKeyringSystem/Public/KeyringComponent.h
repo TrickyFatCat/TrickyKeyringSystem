@@ -45,11 +45,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
 	bool HasKey(TSubclassOf<UKeyType> KeyType);
 
-	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
-	void GetKeyDataByIndex(const int32 Index, FKeyData& KeyData);
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	bool GetKeyDataByIndex(const int32 Index, FKeyData& KeyData);
 
-	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
-	void GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, FKeyData& KeyData);
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	bool GetKeyDataByClass(const TSubclassOf<UKeyType> KeyType, FKeyData& KeyData);
 
 	UKeyType* GetKey(const TSubclassOf<UKeyType> KeyType);
 
