@@ -110,7 +110,7 @@ void UKeyringComponent::GetKeyDataByIndex(const int32 Index, FKeyData& KeyData)
 		return;
 	}
 
-	UKeyType* Key = Keyring[Index];
+	const UKeyType* Key = Keyring[Index];
 
 	if (!IsValid(Key))
 	{

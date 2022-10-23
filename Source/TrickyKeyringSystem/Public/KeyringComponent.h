@@ -13,7 +13,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyUsedSignature, UKeyType*, Key)
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyRemovedSignature, UKeyType*, Key);
 
-UCLASS(ClassGroup=(TrickyPrototyping), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(TrickyKeyring), meta=(BlueprintSpawnableComponent))
 class TRICKYKEYRINGSYSTEM_API UKeyringComponent : public UActorComponent
 {
 	GENERATED_BODY()
