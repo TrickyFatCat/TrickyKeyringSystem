@@ -37,6 +37,9 @@ public:
 	bool RemoveKey(TSubclassOf<UKeyType> KeyType);
 
 	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
+	bool RemoveAllKeys();
+
+	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
 	bool UseKey(TSubclassOf<UKeyType> KeyType);
 
 	UFUNCTION(BlueprintCallable, Category="KeyringSystem")

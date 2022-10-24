@@ -53,6 +53,24 @@ bool UKeyringComponent::RemoveKey(const TSubclassOf<UKeyType> KeyType)
 	return true;
 }
 
+bool UKeyringComponent::RemoveAllKeys()
+{
+	if (Keyring.Num() <= 0)
+	{
+		return false;
+	}
+
+	for (const UKeyType* Key : Keyring)
+	{
+		if (!RemoveKey(Key->GetClass()))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 bool UKeyringComponent::UseKey(TSubclassOf<UKeyType> KeyType)
 {
 	if (!IsValid(KeyType))
