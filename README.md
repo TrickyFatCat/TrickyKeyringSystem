@@ -30,13 +30,20 @@ The plugin contains:
 1. KeyType object;
 2. KeyringComponent;
 
+### KeyType object
+
+The object from which key classes must be inherited.
+
+#### Parameters
+
+1. `DestroyOnUse` - toggles if the key must be removed from the keyring after calling the `UseKey` function;
+2. `KeyData` - a struct which contains some information for the HUD;
+   * `Name` - the name of the key;
+   * `Color` - color of the key;
+
 ### KeyringComponent
 
 A component which manages keys the player got.
-
-### KeyType object
-
-#### Parameters
 
 #### Functions
 
