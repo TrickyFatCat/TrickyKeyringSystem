@@ -62,9 +62,9 @@ bool UKeyringComponent::RemoveAllKeys()
 
 	for (const UKeyType* Key : Keyring)
 	{
-		if (!RemoveKey(Key->GetClass()))
+		if (IsValid(Key))
 		{
-			return false;
+			RemoveKey(Key->GetClass());
 		}
 	}
 
