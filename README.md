@@ -63,3 +63,7 @@ A component which manages keys the player got.
 3. `OnKeyUsed` - called when the key was successfully used;
 
 ## Quick setup
+
+1. Add KeyRingComponent to your character;
+2. Create key classes you need inherited from KeyType object;
+3. Add keys to the keyring or remove them using pickups or custom events;
