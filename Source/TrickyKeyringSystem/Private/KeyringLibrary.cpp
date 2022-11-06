@@ -39,11 +39,6 @@ bool UKeyringLibrary::ActorUseKey(const AActor* OtherActor, const TSubclassOf<UK
 		return false;
 	}
 	
-	if (!ActorHasKey(OtherActor, KeyType))
-	{
-		return false;
-	}
-
 	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
 
 	if (!KeyringComponent)
