@@ -29,5 +29,11 @@ public:
 	static bool ActorUseKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
 
 	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	static UKeyType* GetKeyObject(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
+
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
 	static FKeyData GetKeyData(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
+
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	static bool IsKeyDestroyable(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
 };

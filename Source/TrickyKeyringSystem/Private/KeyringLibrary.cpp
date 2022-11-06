@@ -49,6 +49,23 @@ bool UKeyringLibrary::ActorUseKey(const AActor* OtherActor, const TSubclassOf<UK
 	return KeyringComponent->UseKey(KeyType);
 }
 
+UKeyType* UKeyringLibrary::GetKeyObject(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
+{
+	if (!IsValid(OtherActor) || !KeyType)
+	{
+		return nullptr;
+	}
+
+	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
+
+	if (!KeyringComponent)
+	{
+		return nullptr;
+	}
+
+	return KeyringComponent->GetKey(KeyType);
+}
+
 FKeyData UKeyringLibrary::GetKeyData(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
 {
 	FKeyData KeyData{"KEY_NONE", FLinearColor::Red};
@@ -68,4 +85,28 @@ FKeyData UKeyringLibrary::GetKeyData(const AActor* OtherActor, const TSubclassOf
 	KeyringComponent->GetKeyDataByClass(KeyType, KeyData);
 	
 	return KeyData;
+}
+
+bool UKeyringLibrary::IsKeyDestroyable(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
+{
+	if (!IsValid(OtherActor) || !KeyType)
+	{
+		return false;
+	}
+
+	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
+
+	if (!KeyringComponent)
+	{
+		return false;
+	}
+
+	const UKeyType* Key = GetKeyObject(OtherActor, KeyType);
+
+	if (!IsValid(Key))
+	{
+		return false;
+	}
+
+	return Key->GetDestroyOnUse();
 }
