@@ -21,10 +21,13 @@ class TRICKYKEYRINGSYSTEM_API UKeyringLibrary : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintPure, Category="KeyringSystem")
 	static UKeyringComponent* GetKeyringComponent(const AActor* OtherActor);
-	
+
 	UFUNCTION(BlueprintPure, Category="KeyringSystem")
 	static bool ActorHasKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
 
+	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
+	static bool AddKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
+	
 	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
 	static bool ActorUseKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
 

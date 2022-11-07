@@ -32,6 +32,23 @@ bool UKeyringLibrary::ActorHasKey(const AActor* OtherActor, const TSubclassOf<UK
 	return KeyringComponent->HasKey(KeyType);
 }
 
+bool UKeyringLibrary::AddKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
+{
+	if (IsValid(OtherActor) || !KeyType)
+	{
+		return false;
+	}
+	
+	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
+
+	if (!KeyringComponent)
+	{
+		return false;
+	}
+
+	return KeyringComponent->AddKey(KeyType);
+}
+
 bool UKeyringLibrary::ActorUseKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
 {
 	if (!IsValid(OtherActor) || !KeyType)
