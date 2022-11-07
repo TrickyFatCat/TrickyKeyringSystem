@@ -39,4 +39,10 @@ public:
 
 	UFUNCTION(BlueprintPure, Category="KeyringSystem")
 	static bool IsKeyDestroyable(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
+
+	UFUNCTION(BlueprintPure, Category="KeyringSystem")
+	static bool RemoveKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType);
+	
+	UFUNCTION(BlueprintCallable, Category="KeyringSystem")
+	static bool RemoveAllKeys(const AActor* OtherActor);
 };

@@ -127,3 +127,37 @@ bool UKeyringLibrary::IsKeyDestroyable(const AActor* OtherActor, const TSubclass
 
 	return Key->GetDestroyOnUse();
 }
+
+bool UKeyringLibrary::RemoveKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
+{
+	if (!IsValid(OtherActor) || !KeyType)
+	{
+		return false;
+	}
+
+	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
+
+	if (!KeyringComponent)
+	{
+		return false;
+	}
+
+	return KeyringComponent->RemoveKey(KeyType);
+}
+
+bool UKeyringLibrary::RemoveAllKeys(const AActor* OtherActor)
+{
+	if (!IsValid(OtherActor))
+	{
+		return false;
+	}
+
+	UKeyringComponent* KeyringComponent = GetKeyringComponent(OtherActor);
+
+	if (!KeyringComponent)
+	{
+		return false;
+	}
+
+	return KeyringComponent->RemoveAllKeys();
+}
