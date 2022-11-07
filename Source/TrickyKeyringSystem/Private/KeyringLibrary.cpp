@@ -34,7 +34,7 @@ bool UKeyringLibrary::ActorHasKey(const AActor* OtherActor, const TSubclassOf<UK
 
 bool UKeyringLibrary::AddKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
 {
-	if (IsValid(OtherActor) || !KeyType)
+	if (!IsValid(OtherActor) || !KeyType)
 	{
 		return false;
 	}
