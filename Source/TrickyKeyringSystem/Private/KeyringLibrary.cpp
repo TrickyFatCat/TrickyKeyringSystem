@@ -50,7 +50,7 @@ bool UKeyringLibrary::AddKey(const AActor* OtherActor, const TSubclassOf<UKeyTyp
 	return KeyringComponent->AddKey(KeyType);
 }
 
-bool UKeyringLibrary::ActorUseKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
+bool UKeyringLibrary::UseKey(const AActor* OtherActor, const TSubclassOf<UKeyType> KeyType)
 {
 	if (!IsValid(OtherActor) || !KeyType)
 	{
