@@ -29,6 +29,7 @@ The plugin contains:
 
 1. KeyType object;
 2. KeyringComponent;
+3. KeyringLibrary;
 
 ### KeyType object
 
@@ -61,6 +62,22 @@ A component which manages keys the player got.
 1. `OnKeyAdded` - called when the key was successfully added to the keyring;
 2. `OnKeyRemoved` - called when the key was successfully removed from the keyring;
 3. `OnKeyUsed` - called when the key was successfully used;
+
+### KeyringLibrary
+
+A function library with useful functions to work with KeyringComponent.
+
+#### Functions
+
+1. `GetKeyringComponent` - returns KeyringComponent if the given actor has one;
+2. `ActorHasKey` - checks if the given actor has key;
+3. `AddKey` - adds key to KeyringComponent of the given actor;
+4. `RemoveKey` - removes key from KeyringComponent of the given actor;
+5. `UseKey` - force the given actor to use the given key class;
+6. `GetKeyObject` - returns a key object from KeyringComponent of the given actor;
+7. `GetKeyData` - returns key data from KeyringComponent of the given actor;
+8. `IsKeyDestroyable` - checks if the given key class is destroyable;
+9. `RemoveAllKeys` - removes all keys form KeyringComponent of the given actor;
 
 ## Quick setup
 
