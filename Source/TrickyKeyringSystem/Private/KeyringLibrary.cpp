@@ -4,6 +4,7 @@
 #include "KeyringLibrary.h"
 #include "KeyringComponent.h"
 #include "KeyType.h"
+#include "GameFramework/Actor.h"
 
 UKeyringComponent* UKeyringLibrary::GetKeyringComponent(const AActor* OtherActor)
 {
