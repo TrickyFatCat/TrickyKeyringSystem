@@ -65,6 +65,16 @@ void ULockComponent::SetIsLocked(const bool Value)
 	bIsLocked = Value;
 }
 
+bool ULockComponent::CanUnlock(const AActor* TargetActor) const
+{
+	if (!IsValid(TargetActor) || !RequiredKey)
+	{
+		return false;
+	}
+
+	return UKeyringLibrary::ActorHasKey(TargetActor, RequiredKey);
+}
+
 
 void ULockComponent::BeginPlay()
 {

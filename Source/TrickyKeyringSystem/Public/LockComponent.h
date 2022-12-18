@@ -48,6 +48,9 @@ public:
 	UFUNCTION(BlueprintSetter, Category="LockComponent")
 	void SetIsLocked(bool Value);
 
+	UFUNCTION(BlueprintSetter, Category="LockComponent")
+	bool CanUnlock(const AActor* TargetActor) const;
+
 protected:
 	virtual void BeginPlay() override;
 
