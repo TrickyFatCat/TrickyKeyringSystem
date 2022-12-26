@@ -17,7 +17,7 @@ bool ULockComponent::Lock(AActor* TargetActor)
 		return false;
 	}
 
-	if (!bLockRequiresKey)
+	if (!bLockingRequiresKey)
 	{
 		ToggleIsLocked(true);
 		return true;
@@ -60,11 +60,6 @@ bool ULockComponent::GetIsLocked() const
 	return bIsLocked;
 }
 
-void ULockComponent::SetIsLocked(const bool Value)
-{
-	bIsLocked = Value;
-}
-
 bool ULockComponent::CanUseLock(const AActor* TargetActor) const
 {
 	if (!IsValid(TargetActor) || !RequiredKey)
@@ -79,6 +74,8 @@ bool ULockComponent::CanUseLock(const AActor* TargetActor) const
 void ULockComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	bIsLocked = bLockedOnStart;
 }
 
 void ULockComponent::ToggleIsLocked(const bool Value)

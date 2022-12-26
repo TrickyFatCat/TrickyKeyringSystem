@@ -16,6 +16,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCantLockSignature);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCantUnlockSignature);
 
+/**
+ * Controls locking/unlocking by a given key.
+ */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class TRICKYKEYRINGSYSTEM_API ULockComponent : public UActorComponent
 {
@@ -40,37 +43,38 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnCantUnlockSignature OnCantUnlocked;
 
-	/** Unlocks the component. */
+	/** Toggles if the component is locked on begin play. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="LockComponent")
+	bool bLockedOnStart = true;
+
+	/** Locks the component. */
 	UFUNCTION(BlueprintCallable, Category="LockComponent")
 	bool Lock(AActor* TargetActor);
 
-	/** Locks the component. */
+	/** Unlocks the component. */
 	UFUNCTION(BlueprintCallable, Category="LockComponent")
 	bool Unlock(AActor* TargetActor);
 
 	UFUNCTION(BlueprintGetter, Category="LockComponent")
 	bool GetIsLocked() const;
 
-	UFUNCTION(BlueprintSetter, Category="LockComponent")
-	void SetIsLocked(bool Value);
-
-	/**Checks if the component can be locked/unlocked by given actor. */
+	/**Checks if the component can be locked/unlocked by a given actor. */
 	UFUNCTION(BlueprintSetter, Category="LockComponent")
 	bool CanUseLock(const AActor* TargetActor) const;
 
 protected:
 	virtual void BeginPlay() override;
 
-	/** Key type which is required to unlock the component. */
+	/** Key type which is required to lock/unlock the component. */
 	UPROPERTY(EditAnywhere, Category="LockSettings", meta=(AllowPrivateAccess=true))
 	TSubclassOf<UKeyType> RequiredKey = nullptr;
 
 	/** Toggles if the key required to lock the component. */
 	UPROPERTY(EditAnywhere, Category="LockSettings", meta=(AllowPrivateAccess=true))
-	bool bLockRequiresKey = true;
+	bool bLockingRequiresKey = true;
 
 	/** Determines if the component is locked or not. */
-	UPROPERTY(EditAnywhere, BlueprintGetter=GetIsLocked, BlueprintSetter=SetIsLocked, Category="LockSettings")
+	UPROPERTY(BlueprintGetter=GetIsLocked, Category="LockSettings")
 	bool bIsLocked = true;
 
 	void ToggleIsLocked(const bool Value);
