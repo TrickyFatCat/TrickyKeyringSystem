@@ -10,7 +10,7 @@ The plugin can be used in both C++ and Blueprint projects.
 
 **At the moment, the package is compatible only with Unreal Engine 4.**
 
-1. Download [**package file**](https://github.com/TrickyFatCat/TrickyKeyringSystem/releases/tag/v1.0);
+1. Download the latest [**package file**](https://github.com/TrickyFatCat/TrickyKeyringSystem/releases/);
 2. Unzip the package to the Plugins folder in engine folder, e.g. `C:\Program Files\Epic Games\UE_4.27\Engine\Plugins`;
 3. Restart the project;
 
@@ -30,6 +30,7 @@ The plugin contains:
 1. KeyType object;
 2. KeyringComponent;
 3. KeyringLibrary;
+4. LockComponent;
 
 ### KeyType object
 
@@ -79,8 +80,34 @@ A function library with useful functions to work with KeyringComponent.
 8. `IsKeyDestroyable` - checks if the given key class is destroyable;
 9. `RemoveAllKeys` - removes all keys form KeyringComponent of the given actor;
 
+### Lock Component
+
+Controls locking/unlocking by a given key.
+
+#### Parameters
+
+1. `bLockedOnStart` - toggles if the component is locked on begin play;
+2. `RequiredKey` - the key type required to lock/unlock the component;
+3. `bLockingRequiresKey` - toggles if the key is required to lock the component;
+
+#### Functions
+
+1. `Lock` - locks the component;
+2. `Unlock` - unlocks the component;
+3. `CanUseLock` - checks if the component can be locked/unlocked by a given actor;
+4. `GetIsLocked` - returns if the component is locked or not;
+
+#### Delegates
+
+1. `OnLocked` - called when the component was locked;
+2. `OnUnlocked` - called when the component was unlocked;
+3. `OnCantLocked` - called when the component cant be locked;
+4. `OnCantUnlock` - called when the component cant be unlocked;
+
 ## Quick setup
 
 1. Add KeyRingComponent to your character;
 2. Create key classes you need inherited from KeyType object;
-3. Add keys to the keyring or remove them using pickups or custom events;
+3. Add and adjust LockComponent to actors which must be locked;
+4. Implement lock/unlock logic in the actors with LockComponent;
+5. Give player keys using pickups or other in-game methods;
