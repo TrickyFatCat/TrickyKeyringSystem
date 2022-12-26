@@ -54,9 +54,9 @@ public:
 	UFUNCTION(BlueprintSetter, Category="LockComponent")
 	void SetIsLocked(bool Value);
 
-	/**Checks if the component can be unlocked. */
+	/**Checks if the component can be locked/unlocked by given actor. */
 	UFUNCTION(BlueprintSetter, Category="LockComponent")
-	bool CanUnlock(const AActor* TargetActor) const;
+	bool CanUseLock(const AActor* TargetActor) const;
 
 protected:
 	virtual void BeginPlay() override;

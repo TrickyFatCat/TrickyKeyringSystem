@@ -65,7 +65,7 @@ void ULockComponent::SetIsLocked(const bool Value)
 	bIsLocked = Value;
 }
 
-bool ULockComponent::CanUnlock(const AActor* TargetActor) const
+bool ULockComponent::CanUseLock(const AActor* TargetActor) const
 {
 	if (!IsValid(TargetActor) || !RequiredKey)
 	{
