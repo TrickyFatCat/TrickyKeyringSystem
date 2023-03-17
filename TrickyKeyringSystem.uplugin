@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 3,
-	"VersionName": "1.2",
+	"Version": 4,
+	"VersionName": "2.0a",
 	"FriendlyName": "TrickyKeyringSystem",
 	"Description": "A small plugin for implementing a flexible keyring system.",
 	"Category": "TrickyPrototyping",
@@ -20,9 +20,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
+				"Win64"
 			]
 		}
 	]
