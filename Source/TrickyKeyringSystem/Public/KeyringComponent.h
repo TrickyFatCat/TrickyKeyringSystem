@@ -7,11 +7,7 @@
 #include "Components/ActorComponent.h"
 #include "KeyringComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyAddedSignature, UKeyType*, Key);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyUsedSignature, UKeyType*, Key);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyRemovedSignature, UKeyType*, Key);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyActionPerformedSignature, UKeyType*, Key);
 
 /**
  * A component which manages keys the player got.
@@ -28,19 +24,19 @@ public:
 	 * Called when the key was successfully added to the keyring.
 	 */
 	UPROPERTY(BlueprintAssignable, Category="KeyringSystem")
-	FOnKeyAddedSignature OnKeyAdded;
+	FOnKeyActionPerformedSignature OnKeyAdded;
 
 	/**
 	 * Called when the key was successfully removed from the keyring.
 	 */
 	UPROPERTY(BlueprintAssignable, Category="KeyringSystem")
-	FOnKeyUsedSignature OnKeyUsed;
+	FOnKeyActionPerformedSignature OnKeyUsed;
 
 	/**
 	 * Called when the key was successfully used.
 	 */
 	UPROPERTY(BlueprintAssignable, Category="KeyringSystem")
-	FOnKeyRemovedSignature OnKeyRemoved;
+	FOnKeyActionPerformedSignature OnKeyRemoved;
 
 	/**
 	 * Adds a key of a given class to the keyring.
