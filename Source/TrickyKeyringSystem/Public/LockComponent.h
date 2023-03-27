@@ -8,18 +8,12 @@
 
 class UKeyType;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLockedSignature);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUnlockedSignature);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCantLockSignature);
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCantUnlockSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLockChangedStateSignature);
 
 /**
  * Controls locking/unlocking by a given key.
  */
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(TrickyKeyring), meta=(BlueprintSpawnableComponent))
 class TRICKYKEYRINGSYSTEM_API ULockComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -29,19 +23,19 @@ public:
 
 	/** Called then the component was locked. */
 	UPROPERTY(BlueprintAssignable)
-	FOnLockedSignature OnLocked;
+	FOnLockChangedStateSignature OnLocked;
 
 	/** Called then the component was unlocked. */
 	UPROPERTY(BlueprintAssignable)
-	FOnUnlockedSignature OnUnlocked;
+	FOnLockChangedStateSignature OnUnlocked;
 
 	/** Called then the component can't be locked. */
 	UPROPERTY(BlueprintAssignable)
-	FOnCantLockSignature OnCantLocked;
+	FOnLockChangedStateSignature OnCantLocked;
 
 	/** Called then the component can't be unlocked. */
 	UPROPERTY(BlueprintAssignable)
-	FOnCantUnlockSignature OnCantUnlocked;
+	FOnLockChangedStateSignature OnCantUnlocked;
 
 	/** Toggles if the component is locked on begin play. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="LockComponent")
