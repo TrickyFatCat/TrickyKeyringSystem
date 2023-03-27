@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 4,
-	"VersionName": "2.0a",
+	"Version": 5,
+	"VersionName": "2.0",
 	"FriendlyName": "TrickyKeyringSystem",
 	"Description": "A small plugin for implementing a flexible keyring system.",
 	"Category": "TrickyPrototyping",
