@@ -1,5 +1,7 @@
 # TrickyKeyringSystem
 
+This project isn't in development anymore, a new version can be found [**here**](https://github.com/TrickyFatCat/TrickyGameplayObjects)
+
 A small plugin for implementing a flexible keyring system.
 
 ## Installation
